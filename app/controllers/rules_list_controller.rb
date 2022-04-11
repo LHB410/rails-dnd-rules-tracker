@@ -1,5 +1,5 @@
 class RulesListController < ApplicationController
-  before_action :set_rules_list, only: [:show]
+  before_action :set_rules_list, only: [:show, :update, :edit :destroy]
 
   def new
     @rules_list = RulesList.new
@@ -14,13 +14,22 @@ class RulesListController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+  end
+
   def index
+    @rules_list = RulesList.all
   end
 
   def show
   end
 
-  def delete
+  def destroy
+    @rules_list.destroy
+    redirect_to rules_list_path
   end
 
   private
