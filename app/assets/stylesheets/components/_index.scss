@@ -3,3 +3,18 @@
 @import "avatar";
 @import "form_legend_clear";
 @import "navbar";
+@import "banner";
+@import "button";
+@import "footer";
+@import "cards";
+@import "profile";
+
+
+// color: #E5E4CC light green //  color: #BAC7A7 dark green
+//  color #889E81 medium green
+//  color #698474  next lightest green
+body {
+  font-family: 'Dosis', sans-serif;
+  background: #d4ded8;
+  text-align: center;
+}

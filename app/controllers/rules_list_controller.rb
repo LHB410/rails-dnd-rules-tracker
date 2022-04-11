@@ -1,5 +1,5 @@
 class RulesListController < ApplicationController
-  before_action :set_rules_list, only: [:show, :update, :edit :destroy]
+  before_action :set_rules_list, only: [:show, :update, :edit, :destroy]
 
   def new
     @rules_list = RulesList.new

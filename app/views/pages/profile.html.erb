@@ -1,0 +1,42 @@
+
+
+<!----------------------
+   Our profile cards
+------------------------>
+<div class="cards-container">
+  <div class=" card card-two">
+  <header>
+    <div class="avatar">
+       <% if current_user.avatar.attached? %>
+          <%= cl_image_tag current_user.avatar.key, class: "img" %>
+      <% else %>
+        <img class="avatar-large" alt="avatar-large" src="<%= current_user.avatar %>"  />
+      <% end %>
+    </div>
+  </header>
+
+  <h3><%= current_user.name %></h3>
+  <div class="desc">
+    <%= @rules_list.count %> Games created
+    <%= @rules.count %> Rules written
+  </div>
+  <div class="contacts">
+    <a href=""><i class="fa fa-plus"></i></a>
+    <a href=""><i class="fa fa-whatsapp"></i></a>
+    <a href=""><i class="fa fa-envelope"></i></a>
+    <div class="clear"></div>
+  </div>
+
+  <footer>
+    <p>
+      <a href=""><i class="fa fa-facebook"></i></a>
+      <a href=""><i class="fa fa-linkedin"></i></a>
+      <a href=""><i class="fa fa-twitter"></i></a>
+      <a href=""><i class="fa fa-instagram"></i></a>
+    </p>
+  </footer>
+</div>
+
+  <div class="clear"></div>
+</div>
+
