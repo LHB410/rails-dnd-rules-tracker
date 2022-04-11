@@ -5,5 +5,6 @@ class PagesController < ApplicationController
   end
 
   def profile
+    @rules_list = current_user.rules_list.all
   end
 end
