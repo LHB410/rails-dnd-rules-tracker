@@ -10,10 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_11_024531) do
+ActiveRecord::Schema.define(version: 2022_04_11_031631) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "rules", force: :cascade do |t|
+    t.string "content"
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "rules_list_id", null: false
+    t.index ["rules_list_id"], name: "index_rules_on_rules_list_id"
+  end
+
+  create_table "rules_lists", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -27,4 +42,5 @@ ActiveRecord::Schema.define(version: 2022_04_11_024531) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "rules", "rules_lists"
 end
