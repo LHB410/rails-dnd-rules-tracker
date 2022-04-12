@@ -1,14 +1,14 @@
 <h1>hello from index</h1>
 <div class="container-fluid">
-  <div class="row row-cols-1 row-cols-md-10 g-4">
-    <div class="col">
+  <div class="row justify-content-around">
       <% @rules_list.each do |list| %>
-      <%= render 'shared/rules_list_card', list: list %>
+      <%= render 'shared/mini_rules_list_card', list: list %>
       <% end %>
-    </div>
   </div>
   <%= link_to "Create new Game", new_rules_list_path  %>
 </div>
+
+
 
 
 

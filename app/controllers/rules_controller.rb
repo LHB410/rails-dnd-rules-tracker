@@ -1,5 +1,5 @@
 class RulesController < ApplicationController
-  before_action :set_rules_list, only: [:new, :destroy, :update]
+  before_action :set_rules_list, only: [:new, :create, :destroy, :update]
   before_action :set_rule, only: [:edit, :update]
 
   def new
@@ -8,9 +8,10 @@ class RulesController < ApplicationController
 
   def create
     @rule = Rule.new(rule_params)
-    @rules_list = RulesList.find(params[:id])
+    @user = current_user
+    @rules_list = RulesList.find(params[:rules_list_id])
     @rule.rules_list = @rules_list
-    if @rule.save
+    if @rule.save!
       redirect_to rules_list_path(@rules_list)
     else
       render :new
@@ -36,7 +37,7 @@ class RulesController < ApplicationController
   private
 
   def set_rules_list
-    @rules_list = RulesList.find(params[:id])
+    @rules_list = RulesList.find(params[:rules_list_id])
   end
 
   def set_rule
@@ -45,6 +46,6 @@ class RulesController < ApplicationController
 
 
   def rule_params
-    params.require(:rule).permit(:name, :content)
+    params.require(:rule).permit(:name, :content, :category)
   end
 end
