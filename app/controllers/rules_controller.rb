@@ -1,5 +1,5 @@
 class RulesController < ApplicationController
-  before_action :set_rules_list, only: [:new, :destroy]
+  before_action :set_rules_list, only: [:new, :destroy, :update]
   before_action :set_rule, only: [:edit, :update]
 
   def new
@@ -18,11 +18,12 @@ class RulesController < ApplicationController
   end
 
   def edit
-    set_rule
+
   end
 
   def update
-    set_rule
+    @rule.update(rule_params)
+    redirect_to rules_list_path
   end
 
   def destroy

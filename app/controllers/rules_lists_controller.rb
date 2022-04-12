@@ -1,4 +1,4 @@
-class RulesListController < ApplicationController
+class RulesListsController < ApplicationController
   before_action :set_rules_list, only: [:show, :update, :edit, :destroy]
 
   def new
@@ -7,6 +7,7 @@ class RulesListController < ApplicationController
 
   def create
     @rules_list = RulesList.new(rules_list_params)
+    @rules_list.user = current_user
     if @rules_list.save
       redirect_to rules_list_path(@rules_list)
     else
@@ -38,6 +39,6 @@ class RulesListController < ApplicationController
   end
 
   def rules_list_params
-    params.require(:rules_list).permit(:name)
+    params.require(:rules_list).permit(:name, :description)
   end
 end
