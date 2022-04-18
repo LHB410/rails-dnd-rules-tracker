@@ -19,6 +19,8 @@ class RulesListsController < ApplicationController
   end
 
   def update
+    @rules_list.update(rules_list_params)
+    redirect_to rules_list_path(@rules_list)
   end
 
   def index
