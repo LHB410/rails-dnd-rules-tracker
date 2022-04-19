@@ -4,7 +4,7 @@
       <div class="card vw-100">
         <div class="card-body" id="parchment">
           <% if @rules_list.picture.attached? %>
-            <%= cl_image_tag @rules_list.picture.key %>
+            <%= cl_image_tag @rules_list.picture.key, class: "rules_img" %>
           <% end %>
           <h5 class="card-title"><%= @rules_list.name %></h5>
           <p class="card-text"><%= @rules_list.description %></p>
@@ -14,6 +14,8 @@
               <li><%= rule.name %></li>
               <li>Category: <%= rule.category %></li>
               <li>Rule: <%= rule.content %></li>
+              <%= link_to "Edit Rule", edit_rules_list_rule_path(rule)  %>
+              <%= link_to "Delete Rule", rule_path(rule), method: 'delete', data: { confirm: "Are you sure?" }  %>
               <hr>
             <% end %>
 

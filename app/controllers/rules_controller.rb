@@ -33,7 +33,6 @@ class RulesController < ApplicationController
     redirect_to rules_list_path
   end
 
-
   private
 
   def set_rules_list
