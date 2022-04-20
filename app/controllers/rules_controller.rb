@@ -28,8 +28,10 @@ class RulesController < ApplicationController
   end
 
   def destroy
-    set_rule
+    set_rules_list
+    @rule = @rules_list.rules.find(params[:id])
     @rule.destroy
+    redirect_to rules_list_path(@rules_list)
   end
 
   private

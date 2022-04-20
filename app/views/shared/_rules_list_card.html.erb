@@ -15,7 +15,7 @@
               <li>Category: <%= rule.category %></li>
               <li>Rule: <%= rule.content %></li>
               <%= link_to "Edit Rule", edit_rules_list_rule_path(rule)  %>
-              <%= link_to "Delete Rule", rule_path(rule), method: 'delete', data: { confirm: "Are you sure?" }  %>
+              <%= link_to "Delete Rule", [rule.rules_list, rule], method: 'delete', data: { confirm: "Are you sure?" }  %>
               <hr>
             <% end %>
 
