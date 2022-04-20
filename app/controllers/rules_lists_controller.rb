@@ -31,8 +31,8 @@ class RulesListsController < ApplicationController
   end
 
   def destroy
-    @rules_list.destroy
-    redirect_to rules_list_path
+    @rules_list.destroy!
+    redirect_to rules_lists_path
   end
 
   private

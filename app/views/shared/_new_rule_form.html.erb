@@ -1,7 +1,7 @@
 <div class="container-fluid form-group">
   <div class="row justify-content-md-center">
-    <div class="col-12 col-md-8">
-      <%= simple_form_for [ @rules_list, @rule ] do |f| %>
+    <div class="col-12 col-md-8" id="IBM-plex">
+      <%= simple_form_for [@rules_list, @rule] do |f| %>
         <%= f.input :name %>
         <%= f.input :content, as: :text %>
         <%= f.input :category, collection: ["Combat", "Travel/Exploration", "Role-playing"] %>

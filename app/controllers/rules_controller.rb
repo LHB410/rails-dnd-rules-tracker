@@ -1,6 +1,6 @@
 class RulesController < ApplicationController
-  before_action :set_rules_list, only: [:new, :create, :update]
-  before_action :set_rule, only: [:edit, :update]
+  before_action :set_rules_list
+  before_action :set_rule, only: [:update, :edit]
 
   def new
     @rule = Rule.new
@@ -19,16 +19,17 @@ class RulesController < ApplicationController
   end
 
   def edit
-
   end
 
   def update
-    @rule.update(rule_params)
-    redirect_to rules_list_path
+    if @rule.update(rule_params)
+      redirect_to rules_list_path(@rules_list)
+    else
+      render :edit
+    end
   end
 
   def destroy
-    set_rules_list
     @rule = @rules_list.rules.find(params[:id])
     @rule.destroy
     redirect_to rules_list_path(@rules_list)
@@ -41,10 +42,10 @@ class RulesController < ApplicationController
   end
 
   def set_rule
-    @rule = Rule.find(params[:id])
+   @rule = @rules_list.rules.find(params[:id])
   end
 
   def rule_params
-    params.require(:rule).permit(:name, :content, :category)
+    params.require(:rule).permit(:name, :content, :category, :rules_list_id)
   end
 end
