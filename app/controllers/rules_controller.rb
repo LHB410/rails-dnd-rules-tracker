@@ -1,5 +1,5 @@
 class RulesController < ApplicationController
-  before_action :set_rules_list, only: [:new, :create, :destroy, :update]
+  before_action :set_rules_list, only: [:new, :create, :update]
   before_action :set_rule, only: [:edit, :update]
 
   def new
@@ -30,7 +30,6 @@ class RulesController < ApplicationController
   def destroy
     set_rule
     @rule.destroy
-    redirect_to rules_list_path
   end
 
   private
@@ -42,7 +41,6 @@ class RulesController < ApplicationController
   def set_rule
     @rule = Rule.find(params[:id])
   end
-
 
   def rule_params
     params.require(:rule).permit(:name, :content, :category)
