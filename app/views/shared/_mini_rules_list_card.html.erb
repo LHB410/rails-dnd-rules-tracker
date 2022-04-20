@@ -1,10 +1,16 @@
-<div class="col-12 col-md-6 d-flex justify-content-center text-center">
+<div class="col-12 col-md-6 d-flex justify-content-center">
   <div class="card vw-100" id="parchment">
-    <img src="..." class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title"><%= list.name %></h5>
-      <p class="card-text"><%= list.description %></p>
-      <%= link_to "View Rules", rules_list_path(list) %>
+    <div class="card-body d-flex row">
+      <div class="col">
+        <% if list.picture.attached? %>
+          <%= cl_image_tag list.picture.key, class: "mini_rules_img" %>
+        <% end %>
+      </div>
+      <div class="col d-inline-block">
+        <h5 class="card-title"><%= list.name %></h5>
+        <p class="card-text"><%= list.description %></p>
+        <%= link_to "View Rules", rules_list_path(list) %>
+      </div>
     </div>
   </div>
 </div>
