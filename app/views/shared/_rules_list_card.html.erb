@@ -27,7 +27,9 @@
             <% end %>
 
           </ul>
-          <%= link_to "Add rule", new_rules_list_rule_path(@rules_list)  %>
+          <% if @rules_list.user == current_user %>
+            <%= link_to "Add rule", new_rules_list_rule_path(@rules_list)  %>
+          <% end %>
         </div>
       </div>
     </div>
