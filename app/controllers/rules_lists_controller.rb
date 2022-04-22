@@ -51,6 +51,6 @@ class RulesListsController < ApplicationController
   end
 
   def rules_list_params
-    params.require(:rules_list).permit(:name, :description, :picture, :qr_code)
+    params.require(:rules_list).permit(:name, :description, :picture, :code)
   end
 end
