@@ -4,6 +4,8 @@
       <div class="col">
         <% if list.picture.attached? %>
           <%= cl_image_tag list.picture.key, class: "mini_rules_img" %>
+        <% else %>
+          <%= cl_image_tag("defaultdragon_lbufsh.jpg"), class: "mini_rules_img"  %>
         <% end %>
       </div>
       <div class="col d-inline-block">

@@ -29,14 +29,13 @@ class RulesListsController < ApplicationController
   end
 
   def show
-    @code = @rules_list.code
-    @qr_code = RQRCode::QRCode.new(@code)
+    @qr_code = RQRCode::QRCode.new("https://dnd-rules-tracker.herokuapp.com/rules_lists/#{@rules_list.id}")
     @svg = @qr_code.as_svg(
       offset: 0,
       color: '000',
       shape_rendering: 'crispEdges',
       standalone: true,
-      module_size: 6
+      module_size: 4
     )
   end
 
