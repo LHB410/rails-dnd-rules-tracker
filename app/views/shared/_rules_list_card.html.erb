@@ -7,7 +7,7 @@
             <%= cl_image_tag @rules_list.picture.key, class: "rules_img" %>
           <% end %>
           <h5
-            class="card-title"><%= @rules_list.name %>
+            class="card-title"><%= @rules_list.name %> <%= @svg.html_safe %>
             <%= link_to "Edit Game",  edit_rules_list_path(@rules_list)  %>
             <%= link_to "Delete Game", rules_list_path(rules_list_id: @rules_list.id), method: 'delete', data: { confirm: "Are you sure? This will delete your game forever"}  %>
           </h5>

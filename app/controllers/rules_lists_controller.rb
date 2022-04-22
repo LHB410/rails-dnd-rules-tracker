@@ -1,6 +1,7 @@
 class RulesListsController < ApplicationController
   before_action :set_rules_list, only: [:show, :update, :edit, :destroy]
 
+
   def new
     @rules_list = RulesList.new
   end
@@ -28,6 +29,15 @@ class RulesListsController < ApplicationController
   end
 
   def show
+    @code = @rules_list.code
+    @qr_code = RQRCode::QRCode.new(@code)
+    @svg = @qr_code.as_svg(
+      offset: 0,
+      color: '000',
+      shape_rendering: 'crispEdges',
+      standalone: true,
+      module_size: 6
+    )
   end
 
   def destroy
@@ -41,6 +51,6 @@ class RulesListsController < ApplicationController
   end
 
   def rules_list_params
-    params.require(:rules_list).permit(:name, :description, :picture)
+    params.require(:rules_list).permit(:name, :description, :picture, :qr_code)
   end
 end
