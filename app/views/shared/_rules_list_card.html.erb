@@ -10,8 +10,10 @@
           <% end %>
           <h5
             class="card-title"><%= @rules_list.name %>
-            <%= link_to "Edit Game",  edit_rules_list_path(@rules_list)  %>
-            <%= link_to "Delete Game", rules_list_path(rules_list_id: @rules_list.id), method: 'delete', data: { confirm: "Are you sure? This will delete your game forever"}  %>
+             <% if @rules_list.user == current_user %>
+              <%= link_to "Edit Game",  edit_rules_list_path(@rules_list)  %>
+              <%= link_to "Delete Game", rules_list_path(rules_list_id: @rules_list.id), method: 'delete', data: { confirm: "Are you sure? This will delete your game forever"}  %>
+            <% end %>
           </h5>
           <%= @svg.html_safe %>
           <p class="card-text"><%= @rules_list.description %></p>
@@ -21,8 +23,10 @@
               <li><h5><%= rule.name %></h5></li>
               <li>Category: <%= rule.category %></li>
               <li>Rule: <%= rule.content %></li>
-              <%= link_to "Edit Rule", edit_rules_list_rule_path(@rules_list, rule)  %>
-              <%= link_to "Delete Rule", [@rules_list, rule], method: 'delete', data: { confirm: "Are you sure?" }  %>
+              <% if @rules_list.user == current_user %>
+                <%= link_to "Edit Rule", edit_rules_list_rule_path(@rules_list, rule)  %>
+                <%= link_to "Delete Rule", [@rules_list, rule], method: 'delete', data: { confirm: "Are you sure?" }  %>
+              <% end %>
               <hr>
             <% end %>
 
