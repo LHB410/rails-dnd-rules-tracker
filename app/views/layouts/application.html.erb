@@ -11,7 +11,7 @@
 
     <%# fonts %>
     <link href="https://fonts.cdnfonts.com/css/draconis?styles=86554,86557,86555,86556" rel="stylesheet">
-
+    <%# responsive social media buttons %>
 
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
   </head>
@@ -21,5 +21,9 @@
     <%= render 'shared/flashes' %>
     <%= render 'shared/footer' %>
     <%= yield %>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/vendor/jquery.1.10.2.min.js"><\/script>')</script>
+    <script src="app/rrssb-master/js/rrssb.min.js"></script>
   </body>
 </html>
