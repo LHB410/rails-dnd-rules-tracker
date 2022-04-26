@@ -35,6 +35,13 @@ class RulesController < ApplicationController
     redirect_to rules_list_path(@rules_list)
   end
 
+  def toggle_favorite
+    # The toggle_favorite action finds the cosmetic to like through the id parameter.
+    @rule = Rule.find_by(id: params[:id])
+    # It checks if a user has liked it. If it’s been favourited before, it is now unfavorited and vice versa.
+    current_user.favorited?(@rule) ? current_user.unfavorite(@rule) : current_user.favorite(@rule)
+  end
+
   private
 
   def set_rules_list
