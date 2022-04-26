@@ -3,11 +3,13 @@
     <div class="col-12 col-md-8 col-lg-8 d-flex justify-content-center text-center">
       <div class="card vw-100">
         <div class="card-body" id="parchment">
+        <%# PICTURE  %>
           <% if @rules_list.picture.attached? %>
             <%= cl_image_tag @rules_list.picture.key, class: "rules_img" %>
           <% else %>
             <%= cl_image_tag("defaultdragon_lbufsh.jpg", class: "rules_img")  %>
           <% end %>
+          <%# CARD BODY TEXT BEGINS HERE %>
           <h5
             class="card-title"><%= @rules_list.name %>
              <% if @rules_list.user == current_user %>
@@ -15,12 +17,22 @@
               <%= link_to "Delete Game", rules_list_path(rules_list_id: @rules_list.id), method: 'delete', data: { confirm: "Are you sure? This will delete your game forever"}  %>
             <% end %>
           </h5>
+          <%# QR CODE  %>
           <%= @svg.html_safe %>
           <p class="card-text"><%= @rules_list.description %></p>
           <hr>
+          <%# RULES LIST %>
           <ul class="rule-list-text">
             <% @rules_list.rules.each do |rule|  %>
-              <li><h5><%= rule.name %></h5></li>
+              <li>
+                <h5><%= rule.name %></h5>
+                <%# FAVOURITE  HEART  %>
+                <div class="favorite-icon">
+                  <%= link_to toggle_favorite_rules_list_rule_path(rule), remote: true, method: :post do %>
+                    <%= render 'shared/like_heart', rule: rule %>
+                  <% end %>
+                </div>
+              </li>
               <li>Category: <%= rule.category %></li>
               <li>Rule: <%= rule.content %></li>
               <% if @rules_list.user == current_user %>
@@ -29,8 +41,8 @@
               <% end %>
               <hr>
             <% end %>
-
           </ul>
+          <%# USER SPECIFIC ACTIONS %>
           <% if @rules_list.user == current_user %>
             <%= link_to "Add rule", new_rules_list_rule_path(@rules_list)  %>
           <% end %>

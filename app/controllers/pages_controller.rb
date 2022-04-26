@@ -6,7 +6,7 @@ class PagesController < ApplicationController
 
   def profile
     @rules_list = current_user.rules_list.all
-    @favorite_cosmetics = current_user.favorited_by_type('Cosmetic')
+    @favorite_rules = current_user.favorited_by_type('Rule')
   end
 
 
